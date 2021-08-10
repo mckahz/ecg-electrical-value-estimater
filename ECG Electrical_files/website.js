@@ -17,7 +17,7 @@ function update()
     {
         return getChecked(elementId) ? priceIfOn : 0;
     }
-    document.getElementById("total_cost").innerHTML = "Total: $" + numberWithCommas(
+    document.getElementById("total_cost").innerHTML = "Total: $\n" + numberWithCommas(
         getPrice("pp8", 100000) +
         getPrice("pp16", 200000) +
         getPrice("small_inverter", 10000) +
@@ -44,14 +44,29 @@ function update()
     {
         return getChecked(elementId) ? string : "";
     }
-    document.getElementById("cost-details").innerHTML = (
+    document.getElementById("cost-details").innerHTML =
         getDetailsString("pp8", "8 Package Panel : $1,000.00<br>") +
         getDetailsString("pp16", "16 Package Panel : $2,000.00<br>") +
         getDetailsString("small_inverter", "Small Inverter : $100.00<br>") +
         getDetailsString("big_inverter", "Big Inverter : $200.00<br>") +
         getDetailsString("downlights", "Downlights : $800.00<br>") +
         getDetailsString("hot_water_system", "Hot Water System : $5000.00")
+    ;
+
+    //change the background
+    function getFootprintQuality(elementId, value)
+    {
+        return getChecked(elementId) ? value : 0;
+    }
+    var footprintQuality = (
+        getFootprintQuality("pp8", 1) +
+        getFootprintQuality("pp16", 2) +
+        getFootprintQuality("small_inverter", 1) +
+        getFootprintQuality("big_inverter", 2) +
+        getFootprintQuality("downlights", 2) +
+        getFootprintQuality("hot_water_system", 2)
     );
+    document.getElementsByTagName("body").style.backgroundImage = "url(\"background-" + footprintQuality.toString() + ".png\")";
 
     //change the cost of the bill
     var initialBill = document.getElementById("current-bill").value;
@@ -74,9 +89,6 @@ function update()
             : reducedBill == 0
                 ? "FREE!"
                 : "$" + numberWithCommas(reducedBill * 100);
-    
-    //and the footprint reduction
-    document.getElementById("footprint-reduction").innerHTML = (100 * (1 - multiplier)).toString() + "\%";
 }
 
 window.onload = function()

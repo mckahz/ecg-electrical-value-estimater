@@ -1,0 +1,66 @@
+#services
+{
+    overflow: auto;
+    flex-grow: 1;
+}
+
+#page
+{
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    align-items: center;
+}
+
+#sidebar
+{
+    width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#rest
+{
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#house
+{
+    flex-grow: 1;
+}
+
+#costs
+{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#cost-details
+{
+    color: #4F4F4F;
+    flex-grow: 1;
+    overflow: auto;
+    height: 1px;
+}
+
+#house
+{
+    width: 100%;
+}
+
+.black
+{
+    background-color: #181818;
+    color: #fefefe
+}
+
+.white
+{
+    background-color: #fefefe;
+    color: #181818;
+}
